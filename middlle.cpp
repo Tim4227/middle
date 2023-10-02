@@ -2,6 +2,12 @@
 #include "middle.h"
 using namespace std;
 
+int itc_abs(int a) {
+	if (a > 0)
+		return a;
+	return -a;
+}
+
 void itc_num_print(int n) {
     cout << n;
 }
@@ -18,6 +24,7 @@ int itc_len_num(long long n) {
 }
 
 int itc_sum_num(long long n) {
+    n = itc_abs(n);
     int s = 0;
     while (n) {
         s += n % 10;
@@ -27,7 +34,8 @@ int itc_sum_num(long long n) {
 }
 
 int itc_multi_num(long long n) {
-    int m = 1;
+    n = itc_abs(n);
+    unsigned long long m = 1;
     while (n) {
         m *= n % 10;
         n /= 10;
@@ -36,6 +44,7 @@ int itc_multi_num(long long n) {
 }
 
 int itc_max_num(long long n) {
+    n = itc_abs(n);
     int m = -1;
     while (n) {
         m = m > n % 10 ? m : n % 10;
@@ -45,6 +54,7 @@ int itc_max_num(long long n) {
 }
 
 int itc_min_num(long long n) {
+    n = itc_abs(n);
     int m = 10;
     while (n) {
         m = m < n % 10 ? m : n % 10;
@@ -76,6 +86,8 @@ int itc_rev_num(long long n) {
 
 int itc_null_count(long long n)
 {
+    if (n == 0)
+        return 1;
     int l = 0;
     while (n) {
         if (n % 10 == 0)
