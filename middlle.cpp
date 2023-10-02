@@ -143,14 +143,15 @@ int itc_mirror_count(long long n)
 int itc_second_max_num(long long n)
 {
     n = itc_abs(n);
-    int m = -1, max = 0;
+    if (n < 10)
+        return -1;
+    int m = 0, max = 0;
     while (n) {
-        if (m == n % 10)
-            max = m;
         if (m < n % 10) {
-            max = 0;
+            max = m;
             m = n % 10;
-        }
+        } else if ((n % 10 <= m) && (n % 10 > max))
+            max = n % 10;
         n /= 10;
     }
     return max;
@@ -178,7 +179,8 @@ int itc_second_simple_max_num(long long n)
 
 long long itc_bin_num(long long n)
 {
-    int l = 0, b = 0;
+    unsigned long long b = 0;
+    int l = 0;
     while (n) {
         b = ((n % 2) * pow(10, l)) + b;
         n /= 2;
