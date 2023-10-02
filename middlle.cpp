@@ -8,6 +8,12 @@ int itc_abs(int a) {
 	return -a;
 }
 
+long long itc_abs(long long a) {
+	if (a > 0)
+		return a;
+	return -a;
+}
+
 void itc_num_print(int n) {
     cout << n;
 }
@@ -132,6 +138,7 @@ int itc_mirror_count(long long n)
 
 int itc_second_max_num(long long n)
 {
+    n = itc_abs(n);
     int m = -1, max = -1;
     while (n) {
         if (m == n % 10)
@@ -147,6 +154,7 @@ int itc_second_max_num(long long n)
 
 int itc_second_simple_max_num(long long n)
 {
+    n = itc_abs(n);
     int m = -1, max = -1;
     int nc = n;
     while (nc) {
