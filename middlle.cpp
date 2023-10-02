@@ -50,6 +50,8 @@ int itc_multi_num(long long n) {
 }
 
 int itc_max_num(long long n) {
+    if (n == 0)
+        return 0;
     n = itc_abs(n);
     int m = -1;
     while (n) {
@@ -60,6 +62,8 @@ int itc_max_num(long long n) {
 }
 
 int itc_min_num(long long n) {
+    if (n == 0)
+        return 0;
     n = itc_abs(n);
     int m = 10;
     while (n) {
@@ -139,12 +143,12 @@ int itc_mirror_count(long long n)
 int itc_second_max_num(long long n)
 {
     n = itc_abs(n);
-    int m = -1, max = -1;
+    int m = -1, max = 0;
     while (n) {
         if (m == n % 10)
             max = m;
         if (m < n % 10) {
-            max = -1;
+            max = 0;
             m = n % 10;
         }
         n /= 10;
