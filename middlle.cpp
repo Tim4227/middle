@@ -73,8 +73,8 @@ int itc_min_num(long long n) {
     return m;
 }
 
-int pow(int a, int b) {
-	int n = 1;
+long long pow(int a, int b) {
+	long long n = 1;
 	if (b == 0)
 		return 1;
 	if (b > 0) {
@@ -179,8 +179,8 @@ int itc_second_simple_max_num(long long n)
 
 long long itc_bin_num(long long n)
 {
-    unsigned long long b = 0;
     int l = 0;
+    long long b = 0;
     while (n) {
         b = ((n % 2) * pow(10, l)) + b;
         n /= 2;
@@ -191,7 +191,8 @@ long long itc_bin_num(long long n)
 
 long long itc_oct_num(long long n)
 {
-    int l = 0, o = 0;
+    int l = 0;
+    long long o = 0;
     while (n) {
         o = ((n % 8) * pow(10, l)) + o;
         n /= 8;
