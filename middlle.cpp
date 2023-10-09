@@ -222,3 +222,26 @@ int itc_rev_oct_num(long long n)
     }
     return d;
 }
+
+long long per(long long n, long long s)
+{
+    int l = 0;
+    long long o = 0;
+    while (n) {
+        o = ((n % s) * pow(10, l)) + o;
+        n /= s;
+        l++;
+    }
+    return o;
+}
+
+int revper(long long n, long long s)
+{
+    int l = 0, d = 0;
+    while (n) {
+        d += ((n % 10) % s) * pow(s, l);
+        n /= 10;
+        l++;
+    }
+    return d;
+}
